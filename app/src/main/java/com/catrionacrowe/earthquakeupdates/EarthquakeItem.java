@@ -1,3 +1,7 @@
+/**
+ * Created by Catriona Crowe
+ */
+
 package com.catrionacrowe.earthquakeupdates;
 
 public class EarthquakeItem {

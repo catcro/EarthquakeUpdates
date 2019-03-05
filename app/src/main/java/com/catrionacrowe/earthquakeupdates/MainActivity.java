@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             Log.d(TAG, "onPostExecute method: parameter is " + s);
+            EarthquakeParser earthquakeParser = new EarthquakeParser();
+            earthquakeParser.parse(s);
         }
 
         @Override
