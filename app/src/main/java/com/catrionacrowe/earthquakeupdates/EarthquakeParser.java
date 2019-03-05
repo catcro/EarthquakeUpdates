@@ -5,20 +5,22 @@
 package com.catrionacrowe.earthquakeupdates;
 
 import android.util.Log;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
+
 import java.io.StringReader;
 import java.util.ArrayList;
 
 public class EarthquakeParser {
     private static final String TAG = "EarthquakeParser";
-    private ArrayList<EarthquakeItem> earthquakes;
+    private static ArrayList<EarthquakeItem> earthquakes;
 
     public EarthquakeParser() {
         this.earthquakes = new ArrayList<>();
     }
 
-    public ArrayList<EarthquakeItem> getEarthquakes() {
+    public static ArrayList<EarthquakeItem> getEarthquakes() {
         return earthquakes;
     }
 
@@ -34,12 +36,12 @@ public class EarthquakeParser {
             XmlPullParser xpp = factory.newPullParser();
             xpp.setInput(new StringReader(xmlData));
             int eventType = xpp.getEventType();
-            while(eventType != XmlPullParser.END_DOCUMENT) {
+            while (eventType != XmlPullParser.END_DOCUMENT) {
                 String tagName = xpp.getName();
                 switch (eventType) {
                     case XmlPullParser.START_TAG:
                         Log.d(TAG, "parse: Starting tag for " + tagName);
-                        if("item".equalsIgnoreCase(tagName)) {
+                        if ("item".equalsIgnoreCase(tagName)) {
                             entry = true;
                             currentTag = new EarthquakeItem();
                         }
@@ -51,19 +53,19 @@ public class EarthquakeParser {
 
                     case XmlPullParser.END_TAG:
                         Log.d(TAG, "parse: Ending tag for " + tagName);
-                        if(entry) {
-                            if("item".equalsIgnoreCase(tagName)) {
+                        if (entry) {
+                            if ("item".equalsIgnoreCase(tagName)) {
                                 earthquakes.add(currentTag);
                                 entry = false;
-                            } else if("title".equalsIgnoreCase(tagName)) {
+                            } else if ("title".equalsIgnoreCase(tagName)) {
                                 currentTag.setTitle(TagValue);
-                            } else if("description".equalsIgnoreCase(tagName)) {
+                            } else if ("description".equalsIgnoreCase(tagName)) {
                                 currentTag.setDescription(TagValue);
-                            } else if("link".equalsIgnoreCase(tagName)) {
+                            } else if ("link".equalsIgnoreCase(tagName)) {
                                 currentTag.setLink(TagValue);
-                            } else if("pubdate".equalsIgnoreCase(tagName)) {
+                            } else if ("pubdate".equalsIgnoreCase(tagName)) {
                                 currentTag.setPubdate(TagValue);
-                            } else if("category".equalsIgnoreCase(tagName)) {
+                            } else if ("category".equalsIgnoreCase(tagName)) {
                                 currentTag.setCategory(TagValue);
                             }
                         }
@@ -75,12 +77,12 @@ public class EarthquakeParser {
                 eventType = xpp.next();
 
             }
-            for (EarthquakeItem eq: earthquakes) {
+            for (EarthquakeItem eq : earthquakes) {
                 Log.d(TAG, "--------Earthquake--------");
                 Log.d(TAG, eq.toString());
             }
 
-        } catch(Exception e) {
+        } catch (Exception e) {
             status = false;
             e.printStackTrace();
         }

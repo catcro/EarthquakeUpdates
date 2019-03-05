@@ -8,6 +8,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -17,11 +20,13 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
+    private ListView listEarthquakes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        listEarthquakes = (ListView) findViewById(R.id.xmlListView);
 
         Log.d(TAG, "onCreate method: starting Asynctask");
         DownloadData downloadData = new DownloadData();
@@ -38,13 +43,17 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, "onPostExecute method: parameter is " + s);
             EarthquakeParser earthquakeParser = new EarthquakeParser();
             earthquakeParser.parse(s);
+
+            ArrayAdapter<EarthquakeItem> arrayAdapter = new ArrayAdapter<EarthquakeItem>(
+                    MainActivity.this, R.layout.list_item, EarthquakeParser.getEarthquakes());
+            listEarthquakes.setAdapter(arrayAdapter);
         }
 
         @Override
         protected String doInBackground(String... strings) {
             Log.d(TAG, "doInBackground method: starts with " + strings[0]);
             String rssFeed = downloadXML(strings[0]);
-            if(rssFeed == null) {
+            if (rssFeed == null) {
                 Log.e(TAG, "doInBackground method: Error downloading");
             }
             return rssFeed;
@@ -63,23 +72,23 @@ public class MainActivity extends AppCompatActivity {
                 int charsRead;
                 //reads 800 characters at a time
                 char[] inputBuffer = new char[800];
-                while(true) {
+                while (true) {
                     charsRead = reader.read(inputBuffer);
-                    if(charsRead < 0) {
+                    if (charsRead < 0) {
                         break;
                     }
-                    if(charsRead > 0) {
+                    if (charsRead > 0) {
                         xmlResult.append(String.copyValueOf(inputBuffer, 0, charsRead));
                     }
                 }
                 reader.close();
 
                 return xmlResult.toString();
-            } catch(MalformedURLException e) {
+            } catch (MalformedURLException e) {
                 Log.e(TAG, "downloadXML method: URL is invalid " + e.getMessage());
-            } catch(IOException e) {
+            } catch (IOException e) {
                 Log.e(TAG, "downloadXML method: IO Exception reading data: " + e.getMessage());
-            } catch(SecurityException e) {
+            } catch (SecurityException e) {
                 Log.e(TAG, "downloadXML method: Security Exception - permisson required" + e.getMessage());
             }
 
