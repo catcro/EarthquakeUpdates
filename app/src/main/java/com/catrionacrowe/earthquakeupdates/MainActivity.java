@@ -27,10 +27,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         listEarthquakes = (ListView) findViewById(R.id.xmlListView);
 
-        Log.d(TAG, "onCreate method: starting Asynctask");
+//        Log.d(TAG, "onCreate method: starting Asynctask");
         DownloadData downloadData = new DownloadData();
         downloadData.execute("http://quakes.bgs.ac.uk/feeds/MhSeismology.xml");
-        Log.d(TAG, "onCreate method: done");
+//        Log.d(TAG, "onCreate method: done");
     }
 
     private class DownloadData extends AsyncTask<String, Void, String> {
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            Log.d(TAG, "onPostExecute method: parameter is " + s);
+//            Log.d(TAG, "onPostExecute method: parameter is " + s);
             EarthquakeParser earthquakeParser = new EarthquakeParser();
             earthquakeParser.parse(s);
             EarthquakeAdapter earthquakeAdapter= new EarthquakeAdapter(MainActivity.this, R.layout.list_record,
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... strings) {
-            Log.d(TAG, "doInBackground method: starts with " + strings[0]);
+//            Log.d(TAG, "doInBackground method: starts with " + strings[0]);
             String rssFeed = downloadXML(strings[0]);
             if (rssFeed == null) {
                 Log.e(TAG, "doInBackground method: Error downloading");
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 URL url = new URL(urlPath);
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 int response = connection.getResponseCode();
-                Log.d(TAG, "downloadXML method: The response code was " + response);
+//                Log.d(TAG, "downloadXML method: The response code was " + response);
                 BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 
                 int charsRead;
