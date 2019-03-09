@@ -9,7 +9,7 @@ public class EarthquakeItem {
     private String title;
     private String description;
     private String link;
-    private String pubdate;
+    private String datePublished;
     private String category;
     private String geoLat;
     private String geoLong;
@@ -38,12 +38,12 @@ public class EarthquakeItem {
         this.link = link;
     }
 
-    public String getPubdate() {
-        return pubdate;
+    public String getDatePublished() {
+        return datePublished;
     }
 
-    public void setPubdate(String pubdate) {
-        this.pubdate = pubdate;
+    public void setDatePublished(String datePublished) {
+        this.datePublished = datePublished;
     }
 
     public String getCategory() {
@@ -72,10 +72,10 @@ public class EarthquakeItem {
 
     @Override
     public String toString() {
-        return "Title = " + title + '\n' +
+        return  "Title = " + title + '\n' +
                 ", Description = " + description + '\n' +
-                ", Link = '" + link + '\n' +
-                ", Date Published = " + pubdate + '\n' +
+                ", Link = " + link + '\n' +
+                ", Date Published = " + datePublished + '\n' +
                 ", Category = " + category + '\n' +
                 ", Latitude = " + geoLat + '\n' +
                 ", Longitude = " + geoLong + '\n';

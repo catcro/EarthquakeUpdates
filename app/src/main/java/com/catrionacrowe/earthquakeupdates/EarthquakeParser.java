@@ -64,7 +64,7 @@ public class EarthquakeParser {
                             } else if ("link".equalsIgnoreCase(tagName)) {
                                 currentTag.setLink(TagValue);
                             } else if ("pubdate".equalsIgnoreCase(tagName)) {
-                                currentTag.setPubdate(TagValue);
+                                currentTag.setDatePublished(TagValue);
                             } else if ("category".equalsIgnoreCase(tagName)) {
                                 currentTag.setCategory(TagValue);
                             } else if ("lat".equalsIgnoreCase(tagName)) {
