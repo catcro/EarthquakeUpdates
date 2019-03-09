@@ -73,11 +73,11 @@ public class EarthquakeItem {
     @Override
     public String toString() {
         return  "Title = " + title + '\n' +
-                ", Description = " + description + '\n' +
-                ", Link = " + link + '\n' +
-                ", Date Published = " + datePublished + '\n' +
-                ", Category = " + category + '\n' +
-                ", Latitude = " + geoLat + '\n' +
-                ", Longitude = " + geoLong + '\n';
+                "Description = " + description + '\n' +
+                "Link = " + link + '\n' +
+                "Date Published = " + datePublished + '\n' +
+                "Category = " + category + '\n' +
+                "Latitude = " + geoLat + '\n' +
+                "Longitude = " + geoLong + '\n';
     }
 }

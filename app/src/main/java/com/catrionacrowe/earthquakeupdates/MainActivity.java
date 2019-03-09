@@ -8,7 +8,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.io.BufferedReader;
@@ -43,10 +42,9 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, "onPostExecute method: parameter is " + s);
             EarthquakeParser earthquakeParser = new EarthquakeParser();
             earthquakeParser.parse(s);
-
-            ArrayAdapter<EarthquakeItem> arrayAdapter = new ArrayAdapter<EarthquakeItem>(
-                    MainActivity.this, R.layout.list_item, EarthquakeParser.getEarthquakes());
-            listEarthquakes.setAdapter(arrayAdapter);
+            EarthquakeAdapter earthquakeAdapter= new EarthquakeAdapter(MainActivity.this, R.layout.list_record,
+                    EarthquakeParser.getEarthquakes());
+            listEarthquakes.setAdapter(earthquakeAdapter);
         }
 
         @Override
