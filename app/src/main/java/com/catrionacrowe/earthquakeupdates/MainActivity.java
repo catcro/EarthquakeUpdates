@@ -43,7 +43,19 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
+        int optionID = item.getItemId();
+
+        switch(optionID) {
+            case R.id.element1:
+                break;
+            case R.id.element2:
+                finish();
+                System.exit(0);
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+        return true;
     }
 
     private class DownloadData extends AsyncTask<String, Void, String> {
