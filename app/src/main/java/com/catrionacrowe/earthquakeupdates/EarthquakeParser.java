@@ -1,5 +1,5 @@
 /**
- * Created by Catriona Crowe
+ * Created by Catriona Crowe (S1511579)
  */
 
 package com.catrionacrowe.earthquakeupdates;
@@ -67,6 +67,10 @@ public class EarthquakeParser {
                                 currentTag.setPubdate(TagValue);
                             } else if ("category".equalsIgnoreCase(tagName)) {
                                 currentTag.setCategory(TagValue);
+                            } else if ("lat".equalsIgnoreCase(tagName)) {
+                                currentTag.setGeoLat(TagValue);
+                            } else if ("long".equalsIgnoreCase(tagName)) {
+                                currentTag.setGeoLong(TagValue);
                             }
                         }
                         break;

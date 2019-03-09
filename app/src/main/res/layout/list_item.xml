@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- By Catriona Crowe (S1511579) -->
+
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/appTextView"
     android:layout_width="match_parent"

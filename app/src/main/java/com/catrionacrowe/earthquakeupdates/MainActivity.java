@@ -1,5 +1,5 @@
 /**
- * Created by Catriona Crowe
+ * Created by Catriona Crowe (S1511579)
  */
 
 package com.catrionacrowe.earthquakeupdates;
