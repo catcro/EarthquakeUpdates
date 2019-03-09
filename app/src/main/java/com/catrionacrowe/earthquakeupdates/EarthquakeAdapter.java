@@ -34,19 +34,33 @@ public class EarthquakeAdapter extends ArrayAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder viewHolder;
+
         if (convertView == null){
             convertView = layoutInflater.inflate(layoutResource, parent, false);
-        }
 
-        TextView earthquakeTitle = (TextView) convertView.findViewById(R.id.earthquakeTitle);
-        TextView earthquakeDescription = (TextView) convertView.findViewById(R.id.earthquakeDescription);
+            viewHolder = new ViewHolder(convertView);
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
+        }
 
         EarthquakeItem currentApp = earthquakes.get(position);
 
-        earthquakeTitle.setText(currentApp.getTitle());
-        earthquakeDescription.setText(currentApp.getDescription());
+        viewHolder.earthquakeTitle.setText(currentApp.getTitle());
+        viewHolder.earthquakeDescription.setText(currentApp.getDescription());
 
         return convertView;
+    }
+
+    private class ViewHolder {
+        final TextView earthquakeTitle;
+        final TextView earthquakeDescription;
+
+        ViewHolder(View v) {
+            this.earthquakeTitle = v.findViewById(R.id.earthquakeTitle);
+            this.earthquakeDescription = v.findViewById(R.id.earthquakeDescription);
+        }
     }
 
 }
