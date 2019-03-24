@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Earthquake Updates</string>
+    <string name="title_activity_maps">View Map</string>
 </resources>

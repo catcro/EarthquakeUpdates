@@ -7,7 +7,7 @@
 
     <item
         android:id="@+id/element1"
-        android:title="Advanced Search" />
+        android:title="View on Map" />
     <item
         android:id="@+id/element2"
         android:title="Exit" />

@@ -11,6 +11,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.content.Intent;
+
+import com.google.android.gms.maps.GoogleMap;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -47,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
 
         switch(optionID) {
             case R.id.element1:
+                setContentView(R.layout.activity_maps);
+                Intent mapsIntent = new Intent(this, MapsActivity.class);
+                startActivity(mapsIntent);
                 break;
             case R.id.element2:
                 finish();
