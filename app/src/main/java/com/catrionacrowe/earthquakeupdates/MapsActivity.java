@@ -41,28 +41,30 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         ArrayList<EarthquakeItem> earthquakes = EarthquakeParser.getEarthquakes();
 
-        //set the centre location for zoom purposes
+        //set the centre location isle of man for zoom purposes later
         LatLng centreLocation = new LatLng(54.072701, -4.653230);
 
+        //for each earthquake item do
         for (EarthquakeItem eq : earthquakes) {
 
-            String [] titlesplit = eq.getDescription().split(";",-1);
+            //split the description into chunks using ';'
+            String [] splitString = eq.getDescription().split(";",-1);
 
-            //get lat
+            //convert geoLat to double so it can be used for type LatLng later
             double varlat = Double.parseDouble(eq.getGeoLat());
 
-            //get long
+            //convert geoLong to double so it can be used for type LatLng later
             double varlong =  Double.parseDouble(eq.getGeoLong());
 
-            //set position of earthquake
+            //set position of earthquake to the current earthquake position using the  new variable values of varlat and varlong
             LatLng position = new LatLng(varlat, varlong);
 
             // Add a marker using lat and long coordinates and move the camera to the location plotted
-            mMap.addMarker(new MarkerOptions().position(position).title(titlesplit[1]));
+            mMap.addMarker(new MarkerOptions().position(position).title(splitString[1]));
 
             }
 
-        //zoom to centre on GB by 5
+        //zoom to 'centreLocation' of GB by 5
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(centreLocation, 5), 5000, null);
         //change map type to hybrid
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);

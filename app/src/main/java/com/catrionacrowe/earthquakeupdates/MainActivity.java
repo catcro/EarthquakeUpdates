@@ -13,8 +13,6 @@ import android.view.MenuItem;
 import android.widget.ListView;
 import android.content.Intent;
 
-import com.google.android.gms.maps.GoogleMap;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
