@@ -46,7 +46,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         for (EarthquakeItem eq : earthquakes) {
 
-            String [] titlesplit = eq.getTitle().split(":",-1);
+            String [] titlesplit = eq.getDescription().split(";",-1);
 
             //get lat
             double varlat = Double.parseDouble(eq.getGeoLat());
@@ -58,7 +58,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             LatLng position = new LatLng(varlat, varlong);
 
             // Add a marker using lat and long coordinates and move the camera to the location plotted
-            mMap.addMarker(new MarkerOptions().position(position).title(titlesplit[2]));
+            mMap.addMarker(new MarkerOptions().position(position).title(titlesplit[1]));
 
             }
 
