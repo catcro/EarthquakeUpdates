@@ -7,7 +7,7 @@
 
     <item
         android:id="@+id/element1"
-        android:title="View on Map" />
+        android:title="View Earthquakes by Map" />
     <item
         android:id="@+id/element2"
         android:title="Exit" />
