@@ -48,11 +48,18 @@ public class MainActivity extends AppCompatActivity {
 
         switch(optionID) {
             case R.id.element1:
-                setContentView(R.layout.activity_maps);
-                Intent mapsIntent = new Intent(this, MapsActivity.class);
-                startActivity(mapsIntent);
+                setContentView(R.layout.activity_main);
+                Intent homePage = new Intent(this, MainActivity.class);
+                startActivity(homePage);
                 break;
             case R.id.element2:
+                setContentView(R.layout.activity_maps);
+                Intent mapsPage = new Intent(this, MapsActivity.class);
+                startActivity(mapsPage);
+                break;
+            case R.id.element3:
+                break;
+            case R.id.element4:
                 finish();
                 System.exit(0);
                 break;
