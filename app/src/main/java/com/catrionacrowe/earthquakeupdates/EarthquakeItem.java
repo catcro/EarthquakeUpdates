@@ -8,11 +8,16 @@ public class EarthquakeItem {
 
     private String title;
     private String description;
+    private String location;
+    private String magnitude;
+    private String depth;
     private String link;
     private String datePublished;
     private String category;
     private String geoLat;
     private String geoLong;
+
+    //attributes parsed from the RSS feed
 
     public String getTitle() {
         return title;
@@ -28,6 +33,30 @@ public class EarthquakeItem {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getMagnitude() {
+        return magnitude;
+    }
+
+    public void setMagnitude(String magnitude) {
+        this.magnitude = magnitude;
+    }
+
+    public String getDepth() {
+        return depth;
+    }
+
+    public void setDepth(String depth) {
+        this.depth = depth;
     }
 
     public String getLink() {
@@ -74,6 +103,9 @@ public class EarthquakeItem {
     public String toString() {
         return  "Title = " + title + '\n' +
                 "Description = " + description + '\n' +
+                "Location = " + location + '\n' +
+                "Magnitude = " + magnitude + '\n' +
+                "Depth = " + depth + '\n' +
                 "Link = " + link + '\n' +
                 "Date Published = " + datePublished + '\n' +
                 "Category = " + category + '\n' +

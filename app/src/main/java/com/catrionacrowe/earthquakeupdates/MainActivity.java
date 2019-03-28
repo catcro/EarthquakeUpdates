@@ -4,14 +4,12 @@
 
 package com.catrionacrowe.earthquakeupdates;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.ListView;
-import android.content.Intent;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,6 +17,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import android.view.Menu;
+import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         listEarthquakes = (ListView) findViewById(R.id.xmlListView);
 
 //        Log.d(TAG, "onCreate method: starting Asynctask");
@@ -78,9 +81,41 @@ public class MainActivity extends AppCompatActivity {
 //            Log.d(TAG, "onPostExecute method: parameter is " + s);
             EarthquakeParser earthquakeParser = new EarthquakeParser();
             earthquakeParser.parse(s);
+
+            ToDB(EarthquakeParser.getEarthquakes());
+
+            DBHelper dbh = new DBHelper(getApplicationContext());
+
+            dbh.deleteStatement();
+
+            List<String> check = dbh.selectStatementA();
+            StringBuilder sb = new StringBuilder();
+            sb.append(check.size() + " - Size of check\n");
+            for (String checks : check){
+                sb.append(checks + "\n");
+            }
+
+            check.toArray();
+//          Log.e("STRING",check.toString());
+
             EarthquakeAdapter earthquakeAdapter= new EarthquakeAdapter(MainActivity.this, R.layout.list_record,
                     EarthquakeParser.getEarthquakes());
             listEarthquakes.setAdapter(earthquakeAdapter);
+        }
+
+        private void ToDB(ArrayList<EarthquakeItem> earthquakes){
+            DBHelper handler = new DBHelper (getApplicationContext());
+
+            for (EarthquakeItem eq : earthquakes){
+                String eqLoc = eq.getLocation();
+                String eqMag = eq.getMagnitude();
+                String eqDep = eq.getDepth();
+                String eqLink = eq.getLink();
+                String eqDate = eq.getDatePublished();
+                String eqLat = eq.getGeoLat();
+                String eqLong = eq.getGeoLong();
+                handler.insertStatement(eqLoc,eqMag,eqDep,eqLink,eqDate,eqLat,eqLong);
+            }
         }
 
         @Override
