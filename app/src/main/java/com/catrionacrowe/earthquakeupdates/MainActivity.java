@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listEarthquakes = (ListView) findViewById(R.id.xmlListView);
+        listEarthquakes = (ListView) findViewById(R.id.xmlListView1);
 
 //        Log.d(TAG, "onCreate method: starting Asynctask");
         DownloadData downloadData = new DownloadData();
@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(mapsPage);
                 break;
             case R.id.element3:
+                setContentView(R.layout.activity_search);
                 break;
             case R.id.element4:
                 finish();

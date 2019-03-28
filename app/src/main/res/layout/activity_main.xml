@@ -11,7 +11,7 @@
     tools:context="com.catrionacrowe.earthquakeupdates.MainActivity">
 
     <ListView
-        android:id="@+id/xmlListView"
+        android:id="@+id/xmlListView1"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"

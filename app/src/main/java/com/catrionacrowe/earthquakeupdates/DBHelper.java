@@ -37,7 +37,7 @@ public class DBHelper
             contentValues.put("Date", eqDate.substring(5,16));
             contentValues.put("GeoLat", eqLat);
             contentValues.put("GeoLong", eqLong);
-            Log.d("Entry ", "\n \n Location = " + eqLoc + "\n Magnitude = " + eqMag + "\n Depth = " + eqDep + "\n Link = " + eqLink + "\n Date = " + eqDate.substring(5,16) + "\n GeoLat = " + eqLat + "\n GeoLong =" + eqLong + "\n\n");
+//          Log.d("Entry ", "\n \n Location = " + eqLoc + "\n Magnitude = " + eqMag + "\n Depth = " + eqDep + "\n Link = " + eqLink + "\n Date = " + eqDate.substring(5,16) + "\n GeoLat = " + eqLat + "\n GeoLong =" + eqLong + "\n\n");
             db.insert("earthquakes", null, contentValues);
         }
         return true;
