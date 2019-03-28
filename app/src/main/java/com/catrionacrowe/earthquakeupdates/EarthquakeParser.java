@@ -61,15 +61,19 @@ public class EarthquakeParser {
                                 currentTag.setTitle(TagValue);
                             } else if ("description".equalsIgnoreCase(tagName)) {
                                 currentTag.setDescription(TagValue);
+
                                 //extract location from description
                                 String[] splitString1 = TagValue.split(";", -1);
                                 currentTag.setLocation(splitString1[1]);
+
                                 //extract magnitude from description
                                 String[] splitString2 = TagValue.split(";", -1);
                                 currentTag.setMagnitude(splitString2[4]);
+
                                 //extract depth from description
                                 String[] splitString3 = TagValue.split(";", -1);
                                 currentTag.setDepth(splitString3[3]);
+
                             } else if ("link".equalsIgnoreCase(tagName)) {
                                 currentTag.setLink(TagValue);
                             } else if ("pubdate".equalsIgnoreCase(tagName)) {

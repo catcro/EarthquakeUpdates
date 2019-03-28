@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         private void ToDB(ArrayList<EarthquakeItem> earthquakes){
-            DBHelper handler = new DBHelper (getApplicationContext());
+            DBHelper dbh2 = new DBHelper (getApplicationContext());
 
             for (EarthquakeItem eq : earthquakes){
                 String eqLoc = eq.getLocation();
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                 String eqDate = eq.getDatePublished();
                 String eqLat = eq.getGeoLat();
                 String eqLong = eq.getGeoLong();
-                handler.insertStatement(eqLoc,eqMag,eqDep,eqLink,eqDate,eqLat,eqLong);
+                dbh2.insertStatement(eqLoc,eqMag,eqDep,eqLink,eqDate,eqLat,eqLong);
             }
         }
 
