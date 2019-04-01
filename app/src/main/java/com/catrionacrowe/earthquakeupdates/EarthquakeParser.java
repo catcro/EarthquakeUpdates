@@ -94,7 +94,7 @@ public class EarthquakeParser {
                 eventType = xpp.next();
 
             }
-            // commented out the test below which was used to check that the data parsed correctly
+  //           commented out the test below which was used to check that the data parsed correctly
 //            for (EarthquakeItem eq : earthquakes) {
 //                Log.d(TAG, "--------Earthquake--------");
 //                Log.d(TAG, eq.toString());

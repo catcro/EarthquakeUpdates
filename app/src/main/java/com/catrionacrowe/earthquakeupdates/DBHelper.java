@@ -72,9 +72,9 @@ public class DBHelper
         return list1;
     }
 
-    public ArrayList<String> selectStatementB(String dateSelect) {
+    public ArrayList<String> selectStatementB(String dateSelected) {
         ArrayList<String> list2 = new ArrayList<String>();
-        Cursor c2 = db.rawQuery("SELECT * FROM " + TABLE1 + " WHERE Date == " + "'"+dateSelect+"';",null);
+        Cursor c2 = db.rawQuery("SELECT * FROM " + TABLE1 + " WHERE Date == " + "'"+dateSelected+"';",null);
         c2.moveToFirst();
         while(c2.isAfterLast() == false){
             list2.add(c2.getString(0));
