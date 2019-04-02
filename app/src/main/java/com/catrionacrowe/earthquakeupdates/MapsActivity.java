@@ -49,9 +49,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //for each earthquake item do
         for (EarthquakeItem eq : earthquakes) {
 
-            //split the description into chunks using ';'
-            String [] splitString = eq.getDescription().split(";",-1);
-
             //convert geoLat to double so it can be used for type LatLng later
             double varlat = Double.parseDouble(eq.getGeoLat());
 
@@ -62,7 +59,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             LatLng position = new LatLng(varlat, varlong);
 
             // Add a marker using lat and long coordinates and move the camera to the location plotted
-            mMap.addMarker(new MarkerOptions().position(position).title(splitString[1]));
+            mMap.addMarker(new MarkerOptions().position(position).title(eq.getLocation()).snippet(eq.getMagnitude() + " | " + eq.getDepth()));
 
             }
 
