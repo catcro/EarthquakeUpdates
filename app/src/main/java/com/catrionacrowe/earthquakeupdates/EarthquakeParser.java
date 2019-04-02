@@ -77,7 +77,7 @@ public class EarthquakeParser {
                             } else if ("link".equalsIgnoreCase(tagName)) {
                                 currentTag.setLink(TagValue);
                             } else if ("pubdate".equalsIgnoreCase(tagName)) {
-                                currentTag.setDatePublished(TagValue);
+                                currentTag.setDatePublished(TagValue.substring(5,16));
                             } else if ("category".equalsIgnoreCase(tagName)) {
                                 currentTag.setCategory(TagValue);
                             } else if ("lat".equalsIgnoreCase(tagName)) {
@@ -95,10 +95,10 @@ public class EarthquakeParser {
 
             }
   //           commented out the test below which was used to check that the data parsed correctly
-//            for (EarthquakeItem eq : earthquakes) {
-//                Log.d(TAG, "--------Earthquake--------");
-//                Log.d(TAG, eq.toString());
-//            }
+            for (EarthquakeItem eq : earthquakes) {
+                Log.d(TAG, "--------Earthquake--------");
+                Log.d(TAG, eq.toString());
+            }
 
         } catch (Exception e) {
             status = false;

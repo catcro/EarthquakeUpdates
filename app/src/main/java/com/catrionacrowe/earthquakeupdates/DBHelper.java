@@ -34,7 +34,7 @@ public class DBHelper
             contentValues.put("Magnitude", eqMag);
             contentValues.put("Depth", eqDep);
             contentValues.put("Link", eqLink);
-            contentValues.put("Date", eqDate.substring(5,16));
+            contentValues.put("Date", eqDate);
             contentValues.put("GeoLat", eqLat);
             contentValues.put("GeoLong", eqLong);
 //          Log.d("Entry ", "\n \n Location = " + eqLoc + "\n Magnitude = " + eqMag + "\n Depth = " + eqDep + "\n Link = " + eqLink + "\n Date = " + eqDate.substring(5,16) + "\n GeoLat = " + eqLat + "\n GeoLong =" + eqLong + "\n\n");
@@ -87,7 +87,7 @@ public class DBHelper
             list2.add(c2.getString(7));
             c2.moveToNext();
         }
-        Log.e("TRIAL", String.valueOf(list2));
+        Log.d("Matches ", String.valueOf(list2));
         return list2;
     }
 

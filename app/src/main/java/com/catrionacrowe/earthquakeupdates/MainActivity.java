@@ -122,11 +122,11 @@ public class MainActivity extends AppCompatActivity {
 
         DBHelper dbh = new DBHelper(getApplicationContext());
 
-        ArrayList<String> dateMatches;
+        ArrayList<String> matches;
 
-        dateMatches = dbh.selectStatementB(dateSelected);
+        matches = dbh.selectStatementB(dateSelected);
 
-        for (String results : dateMatches){
+        for (String results : matches){
             Log.d("Results: ",results);
         }
     }
