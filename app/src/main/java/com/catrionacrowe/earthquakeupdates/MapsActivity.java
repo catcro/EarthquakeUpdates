@@ -1,10 +1,11 @@
+/**
+ * Created by Catriona Crowe (S1511579)
+ */
+
 package com.catrionacrowe.earthquakeupdates;
 
-import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;

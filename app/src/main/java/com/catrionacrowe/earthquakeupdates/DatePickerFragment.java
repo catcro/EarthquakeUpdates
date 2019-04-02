@@ -1,3 +1,7 @@
+/**
+ * Created by Catriona Crowe (S1511579)
+ */
+
 package com.catrionacrowe.earthquakeupdates;
 
 import android.app.DatePickerDialog;
