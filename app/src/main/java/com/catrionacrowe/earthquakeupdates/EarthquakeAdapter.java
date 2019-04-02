@@ -47,19 +47,25 @@ public class EarthquakeAdapter extends ArrayAdapter {
 
         EarthquakeItem currentApp = earthquakes.get(position);
 
-        viewHolder.earthquakeTitle.setText(currentApp.getTitle());
-        viewHolder.earthquakeDescription.setText(currentApp.getDescription());
+        viewHolder.eqLocation.setText(currentApp.getLocation());
+        viewHolder.eqDateTime.setText(currentApp.getDateTimePublished());
+        viewHolder.eqMagnitude.setText(currentApp.getMagnitude());
+        viewHolder.eqDepth.setText(currentApp.getDepth());
 
         return convertView;
     }
 
     private class ViewHolder {
-        final TextView earthquakeTitle;
-        final TextView earthquakeDescription;
+        final TextView eqLocation;
+        final TextView eqDateTime;
+        final TextView eqMagnitude;
+        final TextView eqDepth;
 
         ViewHolder(View v) {
-            this.earthquakeTitle = v.findViewById(R.id.earthquakeTitle);
-            this.earthquakeDescription = v.findViewById(R.id.earthquakeDescription);
+            this.eqLocation = v.findViewById(R.id.earthquakeLocation);
+            this.eqDateTime = v.findViewById(R.id.earthquakeDateTime);
+            this.eqMagnitude = v.findViewById(R.id.earthquakeMagnitide);
+            this.eqDepth = v.findViewById(R.id.earthquakeDepth);
         }
     }
 
