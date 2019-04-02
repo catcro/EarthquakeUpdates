@@ -12,6 +12,7 @@ public class EarthquakeItem {
     private String magnitude;
     private String depth;
     private String link;
+    private String dateTimePublished;
     private String datePublished;
     private String category;
     private String geoLat;
@@ -67,6 +68,14 @@ public class EarthquakeItem {
         this.link = link;
     }
 
+    public String getDateTimePublished() {
+        return dateTimePublished;
+    }
+
+    public void setDateTimePublished(String dateTimePublished) {
+        this.dateTimePublished = dateTimePublished;
+    }
+
     public String getDatePublished() {
         return datePublished;
     }
@@ -107,6 +116,7 @@ public class EarthquakeItem {
                 "Magnitude = " + magnitude + '\n' +
                 "Depth = " + depth + '\n' +
                 "Link = " + link + '\n' +
+                "Date|Time Published = " + dateTimePublished + '\n' +
                 "Date Published = " + datePublished + '\n' +
                 "Category = " + category + '\n' +
                 "Latitude = " + geoLat + '\n' +

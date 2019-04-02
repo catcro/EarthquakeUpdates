@@ -77,6 +77,7 @@ public class EarthquakeParser {
                             } else if ("link".equalsIgnoreCase(tagName)) {
                                 currentTag.setLink(TagValue);
                             } else if ("pubdate".equalsIgnoreCase(tagName)) {
+                                currentTag.setDateTimePublished(TagValue);
                                 currentTag.setDatePublished(TagValue.substring(5,16));
                             } else if ("category".equalsIgnoreCase(tagName)) {
                                 currentTag.setCategory(TagValue);
