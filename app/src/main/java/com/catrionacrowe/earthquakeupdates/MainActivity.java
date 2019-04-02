@@ -28,6 +28,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private ListView listEarthquakes;
+    private ListView searchedListEarthquakes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,13 +123,14 @@ public class MainActivity extends AppCompatActivity {
 
         DBHelper dbh = new DBHelper(getApplicationContext());
 
-        ArrayList<String> matches;
-
-        matches = dbh.selectStatementB(dateSelected);
-
-        for (String results : matches){
-            Log.d("Results: ",results);
+        for (String match : dbh.selectStatementB(dateSelected)) {
+            Log.d("Search Results ", match);
         }
+
+        searchedListEarthquakes = (ListView) findViewById(R.id.searchList);
+        EarthquakeAdapter earthquakeAdapter= new EarthquakeAdapter(MainActivity.this, R.layout.list_record,
+                EarthquakeParser.getEarthquakes());
+        searchedListEarthquakes.setAdapter(earthquakeAdapter);
     }
 
     private class DownloadData extends AsyncTask<String, Void, String> {
@@ -141,11 +143,11 @@ public class MainActivity extends AppCompatActivity {
             EarthquakeParser earthquakeParser = new EarthquakeParser();
             earthquakeParser.parse(s);
 
-            ToDB(EarthquakeParser.getEarthquakes());
-
             DBHelper dbh = new DBHelper(getApplicationContext());
 
             dbh.deleteStatement();
+
+            ToDB(EarthquakeParser.getEarthquakes());
 
             List<String> check = dbh.selectStatementA();
             StringBuilder sb = new StringBuilder();
@@ -155,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             check.toArray();
-//          Log.e("STRING",check.toString());
+//          Log.d("STRING",check.toString());
 
             EarthquakeAdapter earthquakeAdapter= new EarthquakeAdapter(MainActivity.this, R.layout.list_record,
                     EarthquakeParser.getEarthquakes());

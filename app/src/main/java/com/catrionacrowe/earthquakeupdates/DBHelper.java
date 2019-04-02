@@ -41,7 +41,7 @@ public class DBHelper
             contentValues.put("Date", eqDate);
             contentValues.put("GeoLat", eqLat);
             contentValues.put("GeoLong", eqLong);
-//          Log.d("Entry ", "\n \n Location = " + eqLoc + "\n Magnitude = " + eqMag + "\n Depth = " + eqDep + "\n Link = " + eqLink + "\n Date = " + eqDate.substring(5,16) + "\n GeoLat = " + eqLat + "\n GeoLong =" + eqLong + "\n\n");
+//          Log.d("Entry ", "\n \n Location = " + eqLoc + "\n Magnitude = " + eqMag + "\n Depth = " + eqDep + "\n Link = " + eqLink + "\n Date = " + eqDate + "\n GeoLat = " + eqLat + "\n GeoLong =" + eqLong + "\n\n");
             db.insert("earthquakes", null, contentValues);
         }
         return true;
@@ -78,7 +78,7 @@ public class DBHelper
 
     public ArrayList<String> selectStatementB(String dateSelected) {
         ArrayList<String> list2 = new ArrayList<String>();
-        Cursor c2 = db.rawQuery("SELECT * FROM " + TABLE1 + " WHERE Date == " + "'"+dateSelected+"';",null);
+        Cursor c2 = db.rawQuery("SELECT * FROM " + TABLE1 + " WHERE Date = " + "'"+dateSelected+"';",null);
         c2.moveToFirst();
         while(c2.isAfterLast() == false){
             list2.add(c2.getString(0));
