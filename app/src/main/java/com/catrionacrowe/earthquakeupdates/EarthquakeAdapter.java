@@ -20,11 +20,11 @@ public class EarthquakeAdapter extends ArrayAdapter {
     private final LayoutInflater layoutInflater;
     private List<EarthquakeItem> earthquakes;
 
-    public EarthquakeAdapter(Context context, int resource, List<EarthquakeItem> applications) {
+    public EarthquakeAdapter(Context context, int resource, List<EarthquakeItem> earthquakes) {
         super(context, resource);
         this.layoutResource = resource;
         this.layoutInflater = LayoutInflater.from(context);
-        this.earthquakes = applications;
+        this.earthquakes = earthquakes;
     }
 
     @Override

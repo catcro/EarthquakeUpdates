@@ -11,6 +11,8 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import java.io.BufferedReader;
@@ -99,14 +101,6 @@ public class MainActivity extends AppCompatActivity {
      */
     public void processDatePickerResult(int year, int month, int day) {
 
-//        String month_string = Integer.toString(month + 1);
-//        String day_string = Integer.toString(day);
-//        String year_string = Integer.toString(year);
-//
-//        String dateMessage = (month_string +
-//                "/" + day_string +
-//                "/" + year_string);
-
         String[] monthName = {"Jan", "Feb",
                 "Mar", "Apr", "May", "Jun", "Jul",
                 "Aug", "Sep", "Oct", "Nov",
@@ -121,16 +115,34 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, getString(R.string.date) + dateSelected,
                 Toast.LENGTH_SHORT).show();
 
+
         DBHelper dbh = new DBHelper(getApplicationContext());
 
-        for (String match : dbh.selectStatementB(dateSelected)) {
-            Log.d("Search Results ", match);
+        ListView lv = (ListView) findViewById(R.id.searchList);
+
+        //populate an ArrayList<String> from the database and then view it
+        ArrayList<String> theList = new ArrayList<>();
+        List<String> matches;
+        matches = dbh.selectStatementB(dateSelected);
+
+        if(matches == null){
+            Toast.makeText(this, "There were no earthquake on this date, choose another day!",Toast.LENGTH_LONG).show();
+        }else{
+            for (String result : matches){
+                theList.add(result);
+                ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,theList);
+                lv.setAdapter(listAdapter);
+            }
         }
 
-        searchedListEarthquakes = (ListView) findViewById(R.id.searchList);
-        EarthquakeAdapter earthquakeAdapter= new EarthquakeAdapter(MainActivity.this, R.layout.list_record,
-                EarthquakeParser.getEarthquakes());
-        searchedListEarthquakes.setAdapter(earthquakeAdapter);
+//        DBHelper dbh = new DBHelper(getApplicationContext());
+//        List<String> matches;
+//        matches = dbh.selectStatementB(dateSelected);
+//        for (String result : matches){
+//            Log.d("Search Results",result);
+//
+//        }
+
     }
 
     private class DownloadData extends AsyncTask<String, Void, String> {
@@ -147,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
 
             dbh.deleteStatement();
 
-            ToDB(EarthquakeParser.getEarthquakes());
+            importData(EarthquakeParser.getEarthquakes());
 
             List<String> check = dbh.selectStatementA();
             StringBuilder sb = new StringBuilder();
@@ -164,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
             listEarthquakes.setAdapter(earthquakeAdapter);
         }
 
-        private void ToDB(ArrayList<EarthquakeItem> earthquakes){
+        private void importData(ArrayList<EarthquakeItem> earthquakes){
             DBHelper dbh2 = new DBHelper (getApplicationContext());
 
             for (EarthquakeItem eq : earthquakes){
