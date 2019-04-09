@@ -62,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(homePage);
                 break;
             case R.id.element2:
-             //   setContentView(R.layout.activity_maps);
                 Intent mapsPage = new Intent(this, MapsActivity.class);
                 startActivity(mapsPage);
                 break;
@@ -128,21 +127,41 @@ public class MainActivity extends AppCompatActivity {
         if(matches == null){
             Toast.makeText(this, "There were no earthquake on this date, choose another day!",Toast.LENGTH_LONG).show();
         }else{
-            for (String result : matches){
-                theList.add(result);
-                ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,theList);
-                lv.setAdapter(listAdapter);
+            if (matches.size() > 7) {
+
+                double coord1 = Double.parseDouble(matches.get(6));
+                double coord2 = Double.parseDouble(matches.get(14));
+
+                //finds the most northernly earthquake
+                double maxGeoLat = Math.max(coord1, coord2);
+                //Log.d("Max", String.valueOf(maxGeoLat));
+               //Toast.makeText(this, String.valueOf(maxGeoLat),
+               //         Toast.LENGTH_SHORT).show();
+
+                if (maxGeoLat == coord1) {
+                    theList.add(matches.get(1));
+                    theList.add(matches.get(2));
+                    theList.add(matches.get(3));
+                    theList.add(matches.get(4));
+                    theList.add(matches.get(5));
+                    theList.add(matches.get(6));
+                    theList.add(matches.get(7));
+                    ListAdapter listAdapter1 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, theList);
+                    lv.setAdapter(listAdapter1);
+                }else {
+                    theList.add(matches.get(8));
+                    theList.add(matches.get(9));
+                    theList.add(matches.get(10));
+                    theList.add(matches.get(11));
+                    theList.add(matches.get(12));
+                    theList.add(matches.get(13));
+                    theList.add(matches.get(14));
+                    theList.add(matches.get(15));
+                    ListAdapter listAdapter2 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, theList);
+                    lv.setAdapter(listAdapter2);
+                }
             }
         }
-
-//        DBHelper dbh = new DBHelper(getApplicationContext());
-//        List<String> matches;
-//        matches = dbh.selectStatementB(dateSelected);
-//        for (String result : matches){
-//            Log.d("Search Results",result);
-//
-//        }
-
     }
 
     private class DownloadData extends AsyncTask<String, Void, String> {

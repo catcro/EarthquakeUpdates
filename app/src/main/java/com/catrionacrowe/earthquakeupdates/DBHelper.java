@@ -91,7 +91,8 @@ public class DBHelper
             list2.add(c2.getString(7));
             c2.moveToNext();
         }
-        Log.d("Matches ", String.valueOf(list2));
+       // Log.d("Matches ", String.valueOf(list2));
+
         return list2;
     }
 

@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- By Catriona Crowe (S1511579) -->
+
 <resources>
-    <!--
+    <!-- OLD COLOUR THEME
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00675C</color>
-    <color name="colorAccent">#BBE8E6E8</color>
-    -->
+    <color name="colorAccent">#BBE8E6E8</color> -->
 
+    <!-- NEW COLOUR THEME-->
     <color name="colorPrimary">#bc8f8f</color>
     <color name="colorPrimaryDark">#b03060</color>
     <color name="colorAccent">#B0C4DE</color>
 
+    <!-- EXTRA COLOURS-->
     <color name="color1">#96ba75</color>
     <color name="color2">#baff00</color>
     <color name="color3">#78dead</color>
@@ -25,5 +29,4 @@
     <color name="color13">#db7093</color>
     <color name="color14">#ffc0cb</color>
     <color name="color15">#5f9ea0</color>
-
 </resources>

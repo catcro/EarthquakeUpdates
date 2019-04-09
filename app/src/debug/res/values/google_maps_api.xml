@@ -1,3 +1,5 @@
+<!-- By Catriona Crowe (S1511579) -->
+
 <resources>
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBHLBO-WZCG6_FRUbtSdw4Y82pkSdEjo8E</string>
 </resources>
