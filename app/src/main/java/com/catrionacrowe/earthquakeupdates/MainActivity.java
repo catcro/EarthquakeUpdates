@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(homePage);
                 break;
             case R.id.element2:
-                setContentView(R.layout.activity_maps);
+             //   setContentView(R.layout.activity_maps);
                 Intent mapsPage = new Intent(this, MapsActivity.class);
                 startActivity(mapsPage);
                 break;
@@ -112,8 +112,8 @@ public class MainActivity extends AppCompatActivity {
 
  //       Log.d("Date Selected = " ,dateSelected);
 
-        Toast.makeText(this, getString(R.string.date) + dateSelected,
-                Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, getString(R.string.date) + dateSelected,
+       //         Toast.LENGTH_SHORT).show();
 
 
         DBHelper dbh = new DBHelper(getApplicationContext());
