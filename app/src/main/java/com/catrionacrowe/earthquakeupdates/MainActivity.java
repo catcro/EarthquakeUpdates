@@ -30,7 +30,6 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private ListView listEarthquakes;
-    private ListView searchedListEarthquakes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,8 +110,8 @@ public class MainActivity extends AppCompatActivity {
 
  //       Log.d("Date Selected = " ,dateSelected);
 
-       // Toast.makeText(this, getString(R.string.date) + dateSelected,
-       //         Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, getString(R.string.date) + dateSelected,
+//                Toast.LENGTH_SHORT).show();
 
 
         DBHelper dbh = new DBHelper(getApplicationContext());
@@ -125,8 +124,8 @@ public class MainActivity extends AppCompatActivity {
         matches = dbh.selectStatementB(dateSelected);
 
         for (String result: matches)
-        if(matches == null){
-            Toast.makeText(this, "There were no earthquake on this date, choose another day!",Toast.LENGTH_LONG).show();
+        if(matches.isEmpty()){
+            Toast.makeText(getApplicationContext(), "There were no earthquake on this date, choose another day!", Toast.LENGTH_SHORT).show();
         }else{
                     theList.add(result);
                     ListAdapter listAdapter2 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, theList);
@@ -134,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-    private class DownloadData extends AsyncTask<String, Void, String> {
+        private class DownloadData extends AsyncTask<String, Void, String> {
         private static final String TAG = "DownloadData";
 
         @Override

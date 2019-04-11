@@ -40,7 +40,7 @@ public class EarthquakeParser {
                 String tagName = xpp.getName();
                 switch (eventType) {
                     case XmlPullParser.START_TAG:
-//                        Log.d(TAG, "parse: Starting tag for " + tagName);
+               //         Log.d(TAG, "parse: Starting tag for " + tagName);
                         if ("item".equalsIgnoreCase(tagName)) {
                             entry = true;
                             currentTag = new EarthquakeItem();
@@ -52,7 +52,7 @@ public class EarthquakeParser {
                         break;
 
                     case XmlPullParser.END_TAG:
-//                        Log.d(TAG, "parse: Ending tag for " + tagName);
+                   //     Log.d(TAG, "parse: Ending tag for " + tagName);
                         if (entry) {
                             if ("item".equalsIgnoreCase(tagName)) {
                                 earthquakes.add(currentTag);

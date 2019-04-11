@@ -16,6 +16,7 @@ import java.util.List;
 
 public class DBHelper
 {
+    private static final String TAG = "DBHelper";
     private static final String DBNAME = "mpd-db";
     private static final int DBVERSION = 1;
     private static final String TABLE1 = "earthquakes";
@@ -41,7 +42,8 @@ public class DBHelper
             contentValues.put("Date", eqDate);
             contentValues.put("GeoLat", eqLat);
             contentValues.put("GeoLong", eqLong);
-//          Log.d("Entry ", "\n \n Location = " + eqLoc + "\n Magnitude = " + eqMag + "\n Depth = " + eqDep + "\n Link = " + eqLink + "\n Date = " + eqDate + "\n GeoLat = " + eqLat + "\n GeoLong =" + eqLong + "\n\n");
+
+        //    Log.d( TAG,"\n \n Location = " + eqLoc + "\n Magnitude = " + eqMag + "\n Depth = " + eqDep + "\n Link = " + eqLink + "\n Date = " + eqDate + "\n GeoLat = " + eqLat + "\n GeoLong =" + eqLong + "\n\n");
             db.insert("earthquakes", null, contentValues);
         }
         return true;

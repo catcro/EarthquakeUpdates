@@ -4,6 +4,7 @@
 
 package com.catrionacrowe.earthquakeupdates;
 
+import android.util.Log;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private static final String TAG = "MapsActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,19 +44,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        ArrayList<EarthquakeItem> earthquakes = EarthquakeParser.getEarthquakes();
-
         //set the centre location isle of man for zoom purposes later
         LatLng centreLocation = new LatLng(54.072701, -4.653230);
+
+        ArrayList<EarthquakeItem> earthquakes = EarthquakeParser.getEarthquakes();
 
         //for each earthquake item do
         for (EarthquakeItem eq : earthquakes) {
 
             //convert geoLat to double so it can be used for type LatLng later
             double varlat = Double.parseDouble(eq.getGeoLat());
+           // Log.d(TAG, "Latitude" + varlat);
 
             //convert geoLong to double so it can be used for type LatLng later
             double varlong =  Double.parseDouble(eq.getGeoLong());
+          //  Log.d(TAG, "Longitude" + varlong);
 
             //set position of earthquake to the current earthquake position using the  new variable values of varlat and varlong
             LatLng position = new LatLng(varlat, varlong);
